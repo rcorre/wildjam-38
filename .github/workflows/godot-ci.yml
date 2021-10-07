@@ -1,5 +1,8 @@
 name: "godot-ci export"
-on: push
+on: 
+  push:
+    branches:
+      - main
 
 env:
   GODOT_VERSION: 3.3.4
@@ -9,6 +12,7 @@ jobs:
   export-windows:
     name: Windows Export
     runs-on: ubuntu-latest
+    environment: main
     container:
       image: barichello/godot-ci:3.3.4
     steps:
@@ -45,6 +49,7 @@ jobs:
   export-linux:
     name: Linux Export
     runs-on: ubuntu-latest
+    environment: main
     container:
       image: barichello/godot-ci:3.3.4
     steps:
@@ -81,6 +86,7 @@ jobs:
   export-web:
     name: Web Export
     runs-on: ubuntu-latest
+    environment: main
     container:
       image: barichello/godot-ci:3.3.4
     steps:
