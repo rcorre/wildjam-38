@@ -1103,6 +1103,11 @@ down={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="default"
+3d_physics/layer_2="interact"
+
 [physics]
 
 common/enable_pause_aware_picking=true
