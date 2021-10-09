@@ -24,6 +24,6 @@ spot_angle_attenuation = 3.73214
 
 [node name="InteractRay" type="RayCast" parent="."]
 enabled = true
-cast_to = Vector3( 0, 0, -5 )
+cast_to = Vector3( 0, 0, -8 )
 collision_mask = 2
 script = ExtResource( 2 )

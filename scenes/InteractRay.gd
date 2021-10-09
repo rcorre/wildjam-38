@@ -19,3 +19,8 @@ func _physics_process(_delta: float):
 		cur.call(HOVER_METHOD, false) 
 		cur = collider
 		cur.call(HOVER_METHOD, true)
+
+
+func _unhandled_input(ev: InputEvent):
+	if ev.is_action_pressed("interact") and cur:
+		cur.call("on_interact")
