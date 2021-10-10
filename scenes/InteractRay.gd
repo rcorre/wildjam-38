@@ -24,4 +24,7 @@ func _physics_process(_delta: float):
 
 func _unhandled_input(ev: InputEvent):
 	if ev.is_action_pressed("interact") and cur:
-		cur.call("on_interact")
+		if cur.has_method("on_interact"):
+			cur.call("on_interact")
+		elif cur.has_method("on_grab"):
+			cur.call("on_grab", $GrabPoint)

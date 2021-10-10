@@ -1,21 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/SpaceChest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Sattelite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/SpaceDome.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/SpaceDomeBar.tscn" type="PackedScene" id=6]
 
 [node name="Space" type="Spatial"]
 
 [node name="SpaceChest" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -17 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -15.6067, -17 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Sattelite" parent="." instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 20, -54 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 92, 91, -149 )
 
 [node name="Asteroids" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 79, -24 )
 
 [node name="Asteroid" parent="Asteroids" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 40, -21 )
@@ -25,3 +28,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 21, -21 )
 
 [node name="Asteroid3" parent="Asteroids" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 21, 31 )
+
+[node name="SpaceDome" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.758179, -4.09362, -92.3452 )
+
+[node name="SpaceDomeBar" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.764126, -0.644693, 0.0219671, -0.602874, -0.725844, -0.331199, 0.229467, 0.239835, -0.943305, -13.7236, 1, -27.674 )

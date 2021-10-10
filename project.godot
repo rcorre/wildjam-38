@@ -14,6 +14,10 @@ config/name="wildjam38"
 run/main_scene="res://scenes/Space.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [importer_defaults]
 
 scene={
@@ -1112,6 +1116,7 @@ interact={
 
 3d_physics/layer_1="default"
 3d_physics/layer_2="interact"
+3d_physics/layer_3="domebar"
 
 [physics]
 

@@ -23,7 +23,11 @@ spot_angle = 25.0
 spot_angle_attenuation = 3.73214
 
 [node name="InteractRay" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -8 )
 collision_mask = 2
 script = ExtResource( 2 )
+
+[node name="GrabPoint" type="Spatial" parent="InteractRay"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.656987, -3 )
