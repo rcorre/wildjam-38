@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/SpaceChest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/SpaceDome.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/SpaceDomeBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/music/level_1.ogg" type="AudioStream" id=7]
 
 [node name="Space" type="Spatial"]
 
@@ -40,3 +41,7 @@ transform = Transform( 0.384561, 0.86797, 0.314228, 0.894124, -0.434863, 0.10693
 
 [node name="SpaceDomeBar3" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.391005, -0.641688, 0.659812, 0.894124, -0.434863, 0.106939, 0.218306, 0.631767, 0.743782, -2, 16, -10 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
