@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/toolBoxOpen.wav-0058a084b3d182320901ed5fe9380dbb.sample"
+
+[deps]
+
+source_file="res://assets/audio/toolBoxOpen.wav"
+dest_files=[ "res://.import/toolBoxOpen.wav-0058a084b3d182320901ed5fe9380dbb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
