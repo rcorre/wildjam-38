@@ -19,12 +19,11 @@ const DAMAGE_SOUNDS := [
 const MIN_DAMAGE_TIME := 1.0
 const MAX_DAMAGE_TIME := 2.0
 
-onready var vacuum_sound: AudioStreamPlayer3D = $VacuumSound
-
 var suction_area: Area
 var repair_area: Area
 
 var sound := AudioStreamPlayer3D.new()
+var vacuum_sound := AudioStreamPlayer3D.new()
 var timer := Timer.new()
 
 func _ready():
@@ -37,6 +36,13 @@ func _ready():
 	repair_area.look_at(Vector3.ZERO, Vector3.UP)
 
 	add_child(sound)
+	sound.unit_size = 5
+	sound.unit_db = 10
+
+	add_child(vacuum_sound)
+	vacuum_sound.stream = preload("res://assets/audio/vacuum.wav")
+	vacuum_sound.unit_size = 4
+	vacuum_sound.unit_db = 4
 
 	add_child(timer)
 	timer.connect("timeout", self, "damage")
