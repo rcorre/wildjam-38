@@ -65,6 +65,7 @@ script = ExtResource( 2 )
 stream = ExtResource( 3 )
 volume_db = -25.0
 autoplay = true
+bus = "Music"
 
 [node name="SpaceChest" parent="." index="15" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 45 )

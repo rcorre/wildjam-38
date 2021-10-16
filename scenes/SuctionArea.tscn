@@ -60,12 +60,14 @@ draw_pass_1 = SubResource( 5 )
 stream = ExtResource( 2 )
 unit_db = 4.0
 unit_size = 4.0
+bus = "Sound"
 script = ExtResource( 3 )
 
 [node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 4 )
 unit_db = 5.0
 unit_size = 3.0
+bus = "Sound"
 script = ExtResource( 3 )
 samples = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
 
@@ -73,5 +75,6 @@ samples = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
 stream = ExtResource( 7 )
 unit_db = 5.0
 unit_size = 3.0
+bus = "Sound"
 script = ExtResource( 10 )
 samples = [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ]

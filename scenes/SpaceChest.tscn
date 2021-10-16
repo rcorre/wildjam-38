@@ -20,3 +20,4 @@ shape = SubResource( 1 )
 stream = ExtResource( 3 )
 unit_db = 5.0
 unit_size = 2.0
+bus = "Sound"
