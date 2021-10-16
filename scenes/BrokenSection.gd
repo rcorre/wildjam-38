@@ -29,6 +29,7 @@ var timer := Timer.new()
 func _ready():
 	suction_area = SUCTION_AREA_SCENE.instance()
 	add_child(suction_area)
+	suction_area.visible = false
 	repair_area = REPAIR_AREA_SCENE.instance()
 	suction_area.look_at(Vector3.ZERO, Vector3.FORWARD)
 	add_child(repair_area)
@@ -64,7 +65,7 @@ func repair(body: Node):
 	timer.start(rand_range(MIN_DAMAGE_TIME, MAX_DAMAGE_TIME))
 
 func damage():
-	print("damage")
+	suction_area.visible = true
 	set_surface_material(0, INVISIBLE_MATERIAL)
 	set_surface_material(1, INVISIBLE_MATERIAL)
 

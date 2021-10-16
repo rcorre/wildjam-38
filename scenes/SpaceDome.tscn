@@ -14,28 +14,28 @@ script = ExtResource( 2 )
 [node name="Player" parent="." index="4" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 26 )
 
-[node name="BrokenSection" parent="." index="6"]
+[node name="BrokenSection" parent="." index="5"]
 script = ExtResource( 2 )
 
 [node name="static_collision" parent="BrokenSection" index="0"]
 collision_mask = 5
 
-[node name="BrokenSection001" parent="." index="7"]
+[node name="BrokenSection001" parent="." index="6"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection002" parent="." index="8"]
+[node name="BrokenSection002" parent="." index="7"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection003" parent="." index="9"]
+[node name="BrokenSection003" parent="." index="8"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection004" parent="." index="10"]
+[node name="BrokenSection004" parent="." index="9"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection005" parent="." index="11"]
+[node name="BrokenSection005" parent="." index="10"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection006" parent="." index="12"]
+[node name="BrokenSection006" parent="." index="11"]
 script = ExtResource( 2 )
 
 [node name="Music" type="AudioStreamPlayer" parent="." index="13"]
@@ -54,3 +54,5 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45, 35,
 
 [node name="SpaceChest4" parent="." index="17" instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45, 35, 1.96701e-06 )
+
+[node name="Buildings" type="Spatial" parent="." index="18"]
