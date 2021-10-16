@@ -16,23 +16,29 @@ const DAMAGE_SOUNDS := [
 	preload("res://assets/audio/explosion03.wav"),
 ]
 
-onready var body: StaticBody = $static_collision
+const MIN_DAMAGE_TIME := 1.0
+const MAX_DAMAGE_TIME := 2.0
 
 var suction_area: Area
 var repair_area: Area
 
 var sound := AudioStreamPlayer3D.new()
+var timer := Timer.new()
 
 func _ready():
 	suction_area = SUCTION_AREA_SCENE.instance()
 	add_child(suction_area)
 	repair_area = REPAIR_AREA_SCENE.instance()
+	suction_area.look_at(Vector3.ZERO, Vector3.FORWARD)
 	add_child(repair_area)
 	repair_area.connect("body_entered", self, "repair")
+	repair_area.look_at(Vector3.ZERO, Vector3.UP)
 
 	add_child(sound)
 
-	damage()
+	add_child(timer)
+	timer.connect("timeout", self, "damage")
+	timer.start(rand_range(MIN_DAMAGE_TIME, MAX_DAMAGE_TIME))
 
 func repair(body: Node):
 	set_surface_material(0, null)
@@ -46,9 +52,13 @@ func repair(body: Node):
 	sound.stream = REPAIR_SOUNDS[randi() % len(REPAIR_SOUNDS)]
 	sound.play()
 
+	timer.start(rand_range(MIN_DAMAGE_TIME, MAX_DAMAGE_TIME))
+
 func damage():
+	print("damage")
 	set_surface_material(0, INVISIBLE_MATERIAL)
 	set_surface_material(1, INVISIBLE_MATERIAL)
 
 	sound.stream = DAMAGE_SOUNDS[randi() % len(DAMAGE_SOUNDS)]
 	sound.play()
+	timer.stop()
