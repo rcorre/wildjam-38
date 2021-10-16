@@ -1,8 +1,8 @@
 extends KinematicBody
 
-const ACCEL := 8.0
-const DECEL := 4.0
-const MAX_SPEED := 10.0
+const ACCEL := 20.0
+const DECEL := 6.0
+const MAX_SPEED := 20.0
 const LOOK_SPEED := 12.0
 const MOUSE_SENSITIVITY := 0.001
 
