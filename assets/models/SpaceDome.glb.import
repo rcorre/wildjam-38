@@ -11,7 +11,7 @@ dest_files=[ "res://.import/SpaceDome.glb-1289630675d255daa21f98685d3b0708.scn" 
 
 [params]
 
-nodes/root_type="StaticBody"
+nodes/root_type="Spatial"
 nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""

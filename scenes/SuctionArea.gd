@@ -2,6 +2,7 @@ extends Area
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
+	$Particles.look_at(Vector3.ZERO, Vector3.UP)
 
 func _on_body_entered(body: Node):
 	# don't collide with repair detectors any more

@@ -15,6 +15,7 @@ shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+far = 200.0
 
 [node name="SpotLight" type="SpotLight" parent="Camera"]
 spot_range = 40.0
