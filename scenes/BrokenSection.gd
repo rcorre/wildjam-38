@@ -22,7 +22,7 @@ func repair(body: Node):
 	set_surface_material(0, null)
 	set_surface_material(1, null)
 	suction_area.visible = false
-	suction_area.monitoring = false
+	suction_area.set_deferred("monitoring", false)
 	repair_area.visible = false
-	repair_area.monitoring = false
+	repair_area.set_deferred("monitoring", false)
 	body.queue_free()
