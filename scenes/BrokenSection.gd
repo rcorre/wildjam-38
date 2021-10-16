@@ -3,6 +3,7 @@ extends MeshInstance
 const INVISIBLE_MATERIAL := preload("res://assets/materials/Invisible.tres")
 const SUCTION_AREA_SCENE := preload("res://scenes/SuctionArea.tscn")
 const REPAIR_AREA_SCENE := preload("res://scenes/RepairArea.tscn")
+const BROKEN_GROUP := "broken"
 
 const REPAIR_SOUNDS := [
 	preload("res://assets/audio/barPlacement01.wav"),
@@ -22,8 +23,6 @@ var max_damage_time := 40.0
 var suction_area: Area
 var repair_area: Area
 
-var sound := AudioStreamPlayer3D.new()
-var vacuum_sound := AudioStreamPlayer3D.new()
 var timer := Timer.new()
 
 func _ready():
@@ -35,15 +34,6 @@ func _ready():
 	add_child(repair_area)
 	repair_area.connect("body_entered", self, "repair")
 	repair_area.look_at(Vector3.ZERO, Vector3.UP)
-
-	add_child(sound)
-	sound.unit_size = 3
-	sound.unit_db = 5
-
-	add_child(vacuum_sound)
-	vacuum_sound.stream = preload("res://assets/audio/vacuum.wav")
-	vacuum_sound.unit_size = 4
-	vacuum_sound.unit_db = 4
 
 	add_child(timer)
 	timer.connect("timeout", self, "damage")
@@ -58,20 +48,17 @@ func repair(body: Node):
 	repair_area.set_deferred("monitoring", false)
 	body.queue_free()
 
-	vacuum_sound.stop()
-	sound.stream = REPAIR_SOUNDS[randi() % len(REPAIR_SOUNDS)]
-	sound.play()
-
 	# get faster over time
 	max_damage_time = max(MIN_DAMAGE_TIME, max_damage_time - 5.0)
 	timer.start(rand_range(MIN_DAMAGE_TIME, max_damage_time))
+	remove_from_group(BROKEN_GROUP)
+	propagate_call("on_repair")
 
 func damage():
 	suction_area.visible = true
 	set_surface_material(0, INVISIBLE_MATERIAL)
 	set_surface_material(1, INVISIBLE_MATERIAL)
 
-	sound.stream = DAMAGE_SOUNDS[randi() % len(DAMAGE_SOUNDS)]
-	sound.play()
-	vacuum_sound.play()
 	timer.stop()
+	add_to_group(BROKEN_GROUP)
+	propagate_call("on_damage")

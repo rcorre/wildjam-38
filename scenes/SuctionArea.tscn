@@ -1,7 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/SuctionArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/vacuum.wav" type="AudioStream" id=2]
+[ext_resource path="res://scenes/PlayOnDamage.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/explosion01.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/explosion02.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/explosion03.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/barPlacement01.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/barPlacement03.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/barPlacement02.wav" type="AudioStream" id=9]
+[ext_resource path="res://scenes/PlayOnRepair.gd" type="Script" id=10]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.797608, 1.47054, 6.4266 )
@@ -50,3 +58,20 @@ draw_pass_1 = SubResource( 5 )
 
 [node name="VacuumSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
+unit_db = 4.0
+unit_size = 4.0
+script = ExtResource( 3 )
+
+[node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_db = 5.0
+unit_size = 3.0
+script = ExtResource( 3 )
+samples = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+
+[node name="RepairSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+unit_db = 5.0
+unit_size = 3.0
+script = ExtResource( 10 )
+samples = [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ]

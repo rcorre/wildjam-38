@@ -1,58 +1,83 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/models/SpaceDome.glb" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BrokenSection.gd" type="Script" id=2]
 [ext_resource path="res://assets/music/level_1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://scenes/SpaceDome.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/SpaceChest.tscn" type="PackedScene" id=7]
 
 [node name="SpaceDome" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
 
-[node name="BrokenSection007" parent="." index="3"]
+[node name="HUD" type="Control" parent="." index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AirBar" type="ProgressBar" parent="HUD" index="0"]
+anchor_left = 0.4
+anchor_top = 0.94
+anchor_right = 0.6
+anchor_bottom = 0.95
+margin_top = -14.0
+max_value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BrokenSection007" parent="." index="4"]
 script = ExtResource( 2 )
 
-[node name="Player" parent="." index="4" instance=ExtResource( 5 )]
+[node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 26 )
 
-[node name="BrokenSection" parent="." index="5"]
+[node name="BrokenSection" parent="." index="6"]
 script = ExtResource( 2 )
 
 [node name="static_collision" parent="BrokenSection" index="0"]
 collision_mask = 5
 
-[node name="BrokenSection001" parent="." index="6"]
+[node name="BrokenSection001" parent="." index="7"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection002" parent="." index="7"]
+[node name="BrokenSection002" parent="." index="8"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection003" parent="." index="8"]
+[node name="BrokenSection003" parent="." index="9"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection004" parent="." index="9"]
+[node name="BrokenSection004" parent="." index="10"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection005" parent="." index="10"]
+[node name="BrokenSection005" parent="." index="11"]
 script = ExtResource( 2 )
 
-[node name="BrokenSection006" parent="." index="11"]
+[node name="BrokenSection006" parent="." index="12"]
 script = ExtResource( 2 )
 
-[node name="Music" type="AudioStreamPlayer" parent="." index="13"]
+[node name="Music" type="AudioStreamPlayer" parent="." index="14"]
 stream = ExtResource( 3 )
 volume_db = -25.0
 autoplay = true
 
-[node name="SpaceChest" parent="." index="14" instance=ExtResource( 7 )]
+[node name="SpaceChest" parent="." index="15" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 45 )
 
-[node name="SpaceChest2" parent="." index="15" instance=ExtResource( 7 )]
+[node name="SpaceChest2" parent="." index="16" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, -45 )
 
-[node name="SpaceChest3" parent="." index="16" instance=ExtResource( 7 )]
+[node name="SpaceChest3" parent="." index="17" instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45, 35, -1.96701e-06 )
 
-[node name="SpaceChest4" parent="." index="17" instance=ExtResource( 7 )]
+[node name="SpaceChest4" parent="." index="18" instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45, 35, 1.96701e-06 )
 
-[node name="Buildings" type="Spatial" parent="." index="18"]
+[node name="Buildings" type="Spatial" parent="." index="19"]
+
+[connection signal="air_changed" from="." to="HUD/AirBar" method="set_value"]
