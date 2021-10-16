@@ -17,8 +17,8 @@ const DAMAGE_SOUNDS := [
 ]
 
 const MIN_DAMAGE_TIME := 5.0
-const MAX_DAMAGE_TIME := 30.0
 
+var max_damage_time := 40.0
 var suction_area: Area
 var repair_area: Area
 
@@ -47,7 +47,7 @@ func _ready():
 
 	add_child(timer)
 	timer.connect("timeout", self, "damage")
-	timer.start(rand_range(MIN_DAMAGE_TIME, MAX_DAMAGE_TIME))
+	timer.start(rand_range(MIN_DAMAGE_TIME, max_damage_time))
 
 func repair(body: Node):
 	set_surface_material(0, null)
@@ -62,7 +62,9 @@ func repair(body: Node):
 	sound.stream = REPAIR_SOUNDS[randi() % len(REPAIR_SOUNDS)]
 	sound.play()
 
-	timer.start(rand_range(MIN_DAMAGE_TIME, MAX_DAMAGE_TIME))
+	# get faster over time
+	max_damage_time = max(MIN_DAMAGE_TIME, max_damage_time - 5.0)
+	timer.start(rand_range(MIN_DAMAGE_TIME, max_damage_time))
 
 func damage():
 	suction_area.visible = true
