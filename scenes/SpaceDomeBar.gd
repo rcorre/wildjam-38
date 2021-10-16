@@ -1,6 +1,6 @@
 extends Spatial
 
-const SPEED := 5.0
+const SPEED := 7.0
 
 var grab_point: Spatial = null
 

@@ -37,8 +37,8 @@ func _ready():
 	repair_area.look_at(Vector3.ZERO, Vector3.UP)
 
 	add_child(sound)
-	sound.unit_size = 5
-	sound.unit_db = 10
+	sound.unit_size = 3
+	sound.unit_db = 5
 
 	add_child(vacuum_sound)
 	vacuum_sound.stream = preload("res://assets/audio/vacuum.wav")
