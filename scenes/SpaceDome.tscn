@@ -42,6 +42,7 @@ script = ExtResource( 2 )
 
 [node name="Music" type="AudioStreamPlayer" parent="." index="13"]
 stream = ExtResource( 3 )
+volume_db = -25.0
 autoplay = true
 
 [node name="SpaceDomeBar" parent="." index="14" instance=ExtResource( 6 )]
