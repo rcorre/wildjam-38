@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/models/SpaceDome.glb" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BrokenSection.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/materials/Invisible.tres" type="Material" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/SpaceDomeBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/SpaceChest.tscn" type="PackedScene" id=7]
 
 [node name="SpaceDome" instance=ExtResource( 1 )]
 
@@ -50,3 +51,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.2174, 37.7353 )
 
 [node name="SpaceDomeBar2" parent="." index="15" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.2174, -59.2647 )
+
+[node name="SpaceChest" parent="." index="16" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 45 )
+
+[node name="SpaceChest2" parent="." index="17" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, -45 )
+
+[node name="SpaceChest3" parent="." index="18" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45, 35, -1.96701e-06 )
+
+[node name="SpaceChest4" parent="." index="19" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45, 35, 1.96701e-06 )

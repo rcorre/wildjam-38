@@ -1,9 +1,16 @@
 extends Spatial
 
-onready var anim: AnimationPlayer = $AnimationPlayer
+const OPEN_SOUND := preload("res://assets/audio/toolBoxOpen.wav")
+const CLOSE_SOUND := preload("res://assets/audio/toolBoxClose.wav")
 
-func on_interact_hover(on: bool):
-	if on:
-		anim.play("Open")
-	else:
-		anim.play_backwards("Open")
+onready var anim: AnimationPlayer = $AnimationPlayer
+onready var sound: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
+func interact():
+	anim.play("Open")
+	sound.stream = OPEN_SOUND
+	sound.play()
+	yield(anim, "animation_finished")
+	anim.play_backwards("Open")
+	sound.stream = CLOSE_SOUND
+	sound.play()

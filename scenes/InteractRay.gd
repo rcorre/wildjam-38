@@ -1,30 +1,23 @@
-extends RayCast
+extends Area
 
 const HOVER_METHOD := "on_interact_hover"
+const BAR_SCENE := preload("res://scenes/SpaceDomeBar.tscn")
 
-var cur: Node = null
+onready var grab_point: Spatial = $GrabPoint
 
-func _physics_process(_delta: float):
-	var collider := get_collider()
-	var has_cur := is_instance_valid(cur)
-	if has_cur and not collider:
-		# moved from object to no object
-		cur.call(HOVER_METHOD, false)
-		cur = null
-	if collider and not has_cur:
-		# moved from no object to new object
-		cur = collider
-		cur.call(HOVER_METHOD, true)
-	if has_cur and collider != cur:
-		# moved from one object to another
-		cur.call(HOVER_METHOD, false) 
-		cur = collider
-		cur.call(HOVER_METHOD, true)
+func _ready():
+	connect("body_entered", self, "_on_body_entered")
 
+func _on_body_entered(body: Node):
+	if grab_point.get_child_count() > 0:
+		return
 
-func _unhandled_input(ev: InputEvent):
-	if ev.is_action_pressed("interact") and cur:
-		if cur.has_method("on_interact"):
-			cur.call("on_interact")
-		elif cur.has_method("on_grab"):
-			cur.call("on_grab", $GrabPoint)
+	if not body.has_method("interact"):
+		return
+
+	# assuming only interactable is the chest
+	body.call("interact")
+	yield(get_tree().create_timer(1.0), "timeout")
+	var bar := BAR_SCENE.instance()
+	grab_point.add_child(bar)
+	bar.grab_point = grab_point

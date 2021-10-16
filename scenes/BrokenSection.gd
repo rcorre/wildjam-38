@@ -16,8 +16,8 @@ const DAMAGE_SOUNDS := [
 	preload("res://assets/audio/explosion03.wav"),
 ]
 
-const MIN_DAMAGE_TIME := 1.0
-const MAX_DAMAGE_TIME := 2.0
+const MIN_DAMAGE_TIME := 5.0
+const MAX_DAMAGE_TIME := 30.0
 
 var suction_area: Area
 var repair_area: Area
