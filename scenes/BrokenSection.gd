@@ -1,8 +1,8 @@
 extends MeshInstance
 
 const INVISIBLE_MATERIAL := preload("res://assets/materials/Invisible.tres")
-const SUCTION_AREA_SCENE := preload("res://SuctionArea.tscn")
-const REPAIR_AREA_SCENE := preload("res://RepairArea.tscn")
+const SUCTION_AREA_SCENE := preload("res://scenes/SuctionArea.tscn")
+const REPAIR_AREA_SCENE := preload("res://scenes/RepairArea.tscn")
 
 onready var body: StaticBody = $static_collision
 
