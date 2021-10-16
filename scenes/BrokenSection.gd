@@ -19,6 +19,8 @@ const DAMAGE_SOUNDS := [
 const MIN_DAMAGE_TIME := 1.0
 const MAX_DAMAGE_TIME := 2.0
 
+onready var vacuum_sound: AudioStreamPlayer3D = $VacuumSound
+
 var suction_area: Area
 var repair_area: Area
 
@@ -49,6 +51,7 @@ func repair(body: Node):
 	repair_area.set_deferred("monitoring", false)
 	body.queue_free()
 
+	vacuum_sound.stop()
 	sound.stream = REPAIR_SOUNDS[randi() % len(REPAIR_SOUNDS)]
 	sound.play()
 
@@ -61,4 +64,5 @@ func damage():
 
 	sound.stream = DAMAGE_SOUNDS[randi() % len(DAMAGE_SOUNDS)]
 	sound.play()
+	vacuum_sound.play()
 	timer.stop()

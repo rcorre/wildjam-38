@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/SuctionArea.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/vacuum.wav" type="AudioStream" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.797608, 1.47054, 6.4266 )
@@ -46,3 +47,6 @@ amount = 512
 lifetime = 2.0
 process_material = SubResource( 4 )
 draw_pass_1 = SubResource( 5 )
+
+[node name="VacuumSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
