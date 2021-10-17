@@ -2,7 +2,7 @@ extends Spatial
 
 const AIR_MAX := 1.0
 const AIR_REGEN := 0.01
-const AIR_DEGEN := 0.003
+const AIR_DEGEN := 0.005
 
 signal air_changed(amount)
 
