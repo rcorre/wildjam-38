@@ -185,7 +185,7 @@ transform = Transform( 0.882943, 0.0098319, 0.469378, 0, 0.999781, -0.0209421, -
 fov = 39.9
 
 [node name="Asteroid" parent="Camera" index="0" instance=ExtResource( 1 )]
-transform = Transform( 0.480978, -0.0956498, 0.0975229, 0.0975229, 0.490397, 0, -0.0956499, 0.0190214, 0.490397, 0, 0, -33.8004 )
+transform = Transform( 0.000483248, 0.0155367, 0.499758, 0.499758, -0.0155442, 0, 0.0155367, 0.499517, -0.0155443, 0, 0, -33.8004 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/Asteroid" index="1"]
 autoplay = "spin"

@@ -1,10 +1,10 @@
 extends KinematicBody
 
-const ACCEL := 20.0
-const DECEL := 6.0
-const MAX_SPEED := 20.0
+const ACCEL := 30.0
+const DECEL := 10.0
+const MAX_SPEED := 25.0
 const LOOK_SPEED := 12.0
-const MOUSE_SENSITIVITY := 0.001
+const MOUSE_SENSITIVITY := 0.0012
 
 var rot_target := Vector3.ZERO
 var velocity := Vector3.ZERO
