@@ -17,9 +17,9 @@ const DAMAGE_SOUNDS := [
 	preload("res://assets/audio/explosion03.wav"),
 ]
 
-const MIN_DAMAGE_TIME := 5.0
+const MIN_DAMAGE_TIME := 8.0
 
-var max_damage_time := 40.0
+var max_damage_time := 45.0
 var suction_area: Area
 var repair_area: Area
 
@@ -55,10 +55,15 @@ func repair(body: Node):
 	propagate_call("on_repair")
 
 func damage():
-	suction_area.visible = true
 	set_surface_material(0, INVISIBLE_MATERIAL)
 	set_surface_material(1, INVISIBLE_MATERIAL)
 
 	timer.stop()
 	add_to_group(BROKEN_GROUP)
 	propagate_call("on_damage")
+
+	repair_area.visible = true
+	repair_area.set_deferred("monitoring", true)
+
+	suction_area.visible = true
+	suction_area.set_deferred("monitoring", true)
