@@ -1,5 +1,5 @@
 name: "godot-ci export"
-on: 
+on:
   push:
     branches:
       - main
@@ -83,8 +83,8 @@ jobs:
           ITCH_USER: rcorre
           PACKAGE: build/linux
 
-  export-web:
-    name: Web Export
+  export-mac:
+    name: Mac Export
     runs-on: ubuntu-latest
     environment: main
     container:
@@ -96,26 +96,21 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-      - name: Install rsync 📚
+      - name: Mac Build
         run: |
-          apt-get update && apt-get install -y rsync
-      - name: Web Build
-        run: |
-          mkdir ./$EXPORT_NAME
-          rsync -Rr . ./$EXPORT_NAME
-          mkdir -v -p build/web
+          mkdir -v -p build/mac
           cd $EXPORT_NAME
-          godot -v --export "HTML5" ../build/web/index.html
+          godot -v --export "Mac OSX" ../build/mac/$EXPORT_NAME.zip
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: web
-          path: build/web
+          name: mac
+          path: build/mac
       - name: Butler Upload
         uses: josephbmanley/butler-publish-itchio-action@v1.0.2
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: web
+          CHANNEL: osx
           ITCH_GAME: wildjam-38
           ITCH_USER: rcorre
-          PACKAGE: build/web
+          PACKAGE: build/mac
