@@ -19,7 +19,7 @@ const DAMAGE_SOUNDS := [
 
 const MIN_DAMAGE_TIME := 8.0
 
-var max_damage_time := 45.0
+var max_damage_time := 60.0
 var suction_area: Area
 var repair_area: Area
 

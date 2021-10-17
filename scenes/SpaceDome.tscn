@@ -68,16 +68,16 @@ autoplay = true
 bus = "Music"
 
 [node name="SpaceChest" parent="." index="15" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 45 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.6907, 45 )
 
 [node name="SpaceChest2" parent="." index="16" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, -45 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.6907, -45 )
 
 [node name="SpaceChest3" parent="." index="17" instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45, 35, -1.96701e-06 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45, 42.6907, -1.96701e-06 )
 
 [node name="SpaceChest4" parent="." index="18" instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45, 35, 1.96701e-06 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45, 42.6907, 1.96701e-06 )
 
 [node name="Buildings" type="Spatial" parent="." index="19"]
 
