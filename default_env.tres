@@ -29,3 +29,4 @@ glow_intensity = 8.0
 glow_strength = 2.0
 glow_bloom = 1.0
 glow_bicubic_upscale = true
+adjustment_enabled = true

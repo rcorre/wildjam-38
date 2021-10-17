@@ -1,0 +1,211 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/models/Asteroid.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/TitleScene.glb" type="PackedScene" id=2]
+[ext_resource path="res://assets/audio/explosion01.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/TitleScene.gd" type="Script" id=4]
+[ext_resource path="res://assets/audio/uiSfx/uiClick.wav" type="AudioStream" id=5]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0, 0, 0, 1 )
+sky_horizon_color = Color( 0, 0, 0, 1 )
+ground_bottom_color = Color( 0, 0, 0, 1 )
+ground_horizon_color = Color( 0, 0, 0, 1 )
+sun_color = Color( 1, 0.807843, 0, 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_energy = 2.0
+ambient_light_color = Color( 0.8, 0.866667, 0.870588, 1 )
+ambient_light_energy = 4.0
+ambient_light_sky_contribution = 0.98
+fog_depth_begin = 30.0
+fog_depth_end = 400.0
+fog_height_min = 40.0
+fog_height_max = -100.0
+fog_height_curve = 3.36359
+tonemap_mode = 2
+dof_blur_far_distance = 100.0
+dof_blur_far_transition = 50.0
+dof_blur_near_enabled = true
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_bloom = 1.0
+glow_bicubic_upscale = true
+adjustment_enabled = true
+
+[sub_resource type="Animation" id=3]
+length = 16.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 359, 359 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Start"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1.19998, 28.0006, 0 ), Vector3( -19.8607, 145.826, 1.14442 ), Vector3( -19.861, 200, 1.144 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera/Asteroid:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -33.8004 ), Vector3( -0.3755, -0.385655, -52.212 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 39.9, 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera/Asteroid:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Particles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0, 3 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("WorldEnvironment:environment:adjustment_brightness")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.01 ]
+}
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.192157 )
+
+[sub_resource type="Curve" id=6]
+max_value = 4.0
+_data = [ Vector2( 0, 0.291411 ), 0.0, 0.0, 0, 0, Vector2( 0.955319, 1.05215 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_rotate_y = true
+spread = 30.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 39.0
+initial_velocity_random = 0.76
+angular_velocity = 1.0
+angular_velocity_random = 1.0
+damping = 28.3
+angle = 149.4
+angle_random = 1.0
+scale_curve = SubResource( 7 )
+
+[sub_resource type="CubeMesh" id=9]
+
+[node name="TitleScene" instance=ExtResource( 2 )]
+script = ExtResource( 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+environment = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="." index="2"]
+transform = Transform( 0.882943, 0.0098319, 0.469378, 0, 0.999781, -0.0209421, -0.469481, 0.0184907, 0.882749, 15.8652, 30.2921, -120.163 )
+fov = 39.9
+
+[node name="Asteroid" parent="Camera" index="0" instance=ExtResource( 1 )]
+transform = Transform( 0.331337, -0.236398, 0.290399, 0.290399, 0.407024, 0, -0.236399, 0.168663, 0.407024, 0, 0, -33.8004 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/Asteroid" index="1"]
+autoplay = "spin"
+anims/spin = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+anims/Start = SubResource( 4 )
+
+[node name="Particles" type="Particles" parent="." index="4"]
+transform = Transform( -4.37114e-08, -1.49012e-08, 1, -6.5135e-16, 1, 1.49012e-08, -1, 0, -4.37114e-08, -11.3048, 12.3382, -79.621 )
+material_override = SubResource( 5 )
+emitting = false
+amount = 1024
+one_shot = true
+explosiveness = 0.96
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource( 3 )
+volume_db = -16.0
+pitch_scale = 0.85
+bus = "Sound"

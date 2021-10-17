@@ -1,11 +1,82 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/models/SpaceDome.glb" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BrokenSection.gd" type="Script" id=2]
 [ext_resource path="res://assets/music/level_1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://scenes/SpaceDome.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://default_env.tres" type="Environment" id=6]
 [ext_resource path="res://scenes/SpaceChest.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/audio/warning.wav" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=2]
+resource_name = "end"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WorldEnvironment:environment:adjustment_brightness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.01 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -25.0, -80.0 ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/path = NodePath("WorldEnvironment:environment:adjustment_brightness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.01, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, -25.0 ]
+}
 
 [node name="SpaceDome" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
@@ -80,5 +151,16 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45, 42.
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45, 42.6907, 1.96701e-06 )
 
 [node name="Buildings" type="Spatial" parent="." index="19"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="245"]
+autoplay = "start"
+anims/end = SubResource( 2 )
+anims/start = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer" index="0"]
+stream = ExtResource( 8 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="246"]
+environment = ExtResource( 6 )
 
 [connection signal="air_changed" from="." to="HUD/AirBar" method="set_value"]
