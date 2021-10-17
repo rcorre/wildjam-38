@@ -19,6 +19,9 @@ const DAMAGE_SOUNDS := [
 
 const MIN_DAMAGE_TIME := 8.0
 
+export(bool) var start_broken := false
+
+var max_broken := 0
 var max_damage_time := 60.0
 var suction_area: Area
 var repair_area: Area
@@ -37,7 +40,11 @@ func _ready():
 
 	add_child(timer)
 	timer.connect("timeout", self, "damage")
-	timer.start(rand_range(MIN_DAMAGE_TIME, max_damage_time))
+
+	if start_broken:
+		damage()
+	else:
+		timer.start(rand_range(MIN_DAMAGE_TIME, max_damage_time))
 
 func repair(body: Node):
 	set_surface_material(0, null)
@@ -55,6 +62,11 @@ func repair(body: Node):
 	propagate_call("on_repair")
 
 func damage():
+	max_broken += 1
+	if len(get_tree().get_nodes_in_group(BROKEN_GROUP)) >= max_broken:
+		# don't let too many be broken at once
+		timer.start(rand_range(MIN_DAMAGE_TIME, max_damage_time))
+		return
 	set_surface_material(0, INVISIBLE_MATERIAL)
 	set_surface_material(1, INVISIBLE_MATERIAL)
 
